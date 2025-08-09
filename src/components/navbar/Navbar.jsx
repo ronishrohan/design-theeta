@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+
 
 const NavButton = ({ children, open, delay }) => {
   const [hovered, setHovered] = useState(false);
@@ -27,22 +29,25 @@ const NavButton = ({ children, open, delay }) => {
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: open ? 1 : 0 }}
                   transition={{duration: 0.2, ease: "backInOut"}}
-                  className="mx-4"
+                  className="mx-4 flex justify-between items-center w-full h-full"
                 >
+                    
                   {children}
+          <ArrowRight strokeWidth={3}></ArrowRight>
                 </motion.div>
               </motion.div>
             </>
           )}
         </AnimatePresence>
-        <div className="h-[60px] flex items-center overflow-hidden relative">
+        <div className="h-[40px] flex items-center overflow-hidden relative">
             <motion.div
-          initial={{ y: "-200%", scaleY: 2 }}
-          animate={{ y: open ? "0%" : "-200%", scaleY: open ? 1 : 1.2 }}
-          transition={{ delay: 0.25 + 0.06 * delay, ease: "circInOut" }}
-          className="mx-4"
+          initial={{ y: "-200%", scale: 1 }}
+          animate={{ y: open ? "0%" : "-200%", scale: open ? 1 : 11 }}
+          transition={{ delay: 0.25 + 0.06 * delay, ease: "circInOut", duration: 0.6 }}
+          className="mx-4 relative"
         >
           {children}
+
         </motion.div>
         </div>
       </motion.div>
@@ -68,7 +73,11 @@ const Navbar = () => {
   };
   return (
     <>
-      <AnimatePresence>
+    <AnimatePresence>
+        {menuOpen && <>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} onClick={() => setMenuOpen(false)} className="z-10 fixed size-full bg-black/25" ></motion.div></>}
+    </AnimatePresence>
+      <AnimatePresence mode="wait">
         {menuOpen && (
           <motion.div
             initial={{ y: "-100%" }}
