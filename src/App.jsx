@@ -1,17 +1,16 @@
 import React from 'react'
 import Navbar from './components/navbar/Navbar'
 import ReactLenis from 'lenis/react'
+import { Footer } from './components/Footer'
+import Hero from './pages/home/Hero'
 
 
 const App = () => {
   return (
-    <div className='bg-zinc-950 text-white flex flex-col font-inter'>
+    <div className='bg-zinc-950 overflow-x-clip text-white flex flex-col font-inter'>
       <Navbar />
-      <div className='h-[calc(100vh-60px)] items-center justify-center text-6xl font-instrument-serif flex flex-col'>
-        WE CREATE 
-        <div className='text-9xl text-dt-yellow mb-20'>BRANDS</div>
-      </div>
-      <div className='h-screen'></div>
+      <Hero></Hero>
+      <Footer />
     </div>
   )
 }

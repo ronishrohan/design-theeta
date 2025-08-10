@@ -129,7 +129,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
-              className="z-10 fixed size-full bg-black/25"
+              className="z-40 fixed size-full bg-black/25"
             ></motion.div>
           </>
         )}
