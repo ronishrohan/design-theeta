@@ -93,7 +93,7 @@ const Work = () => {
           // whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="overflow-x-hidden px-12 h-full"
+          className="overflow-hidden px-12 h-full"
         >
           <motion.div
             

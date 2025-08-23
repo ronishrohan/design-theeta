@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import ac from "pixelarticons/svg/ac.svg"
+import ac from "pixelarticons/svg/ac.svg";
 
 const Hero = () => {
   return (
@@ -9,7 +9,10 @@ const Hero = () => {
           <img src={ac} alt="" />
         </div>
       </div> */}
-      <div className="z-20 relative flex items-center justify-center flex-col">
+      <div className="z-10 absolute size-full top-0 left-0 flex items-center justify-center">
+        
+      </div>
+      <div className="z-40 relative flex items-center justify-center flex-col">
         <motion.div
           initial={{ opacity: 0, y: 5, scaleY: 0.8 }}
           animate={{ opacity: 1, y: 0, scaleY: 1 }}
