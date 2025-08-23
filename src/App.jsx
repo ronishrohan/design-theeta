@@ -6,7 +6,7 @@ import Work from './pages/home/Work'
 
 const App = () => {
   return (
-    <div className='bg-zinc-950 overflow-x-clip text-white flex flex-col font-inter'>
+    <div className='bg-[#080808] overflow-x-clip text-white flex flex-col font-inter'>
       <Navbar />
       <Hero />
       <Work />

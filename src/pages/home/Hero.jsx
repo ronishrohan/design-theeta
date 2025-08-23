@@ -14,6 +14,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 5, scaleY: 0.8 }}
           animate={{ opacity: 1, y: 0, scaleY: 1 }}
           style={{ originY: "100%" }}
+          className="text-[6vw]"
           transition={{ duration: 0.3, ease: "circInOut", delay: 0.15 }}
         >
           WE CREATE
@@ -24,7 +25,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0, scaleY: 1 }}
           style={{ originY: "100%" }}
           transition={{ duration: 0.3, delay: 0.1, ease: "circInOut" }}
-          className="text-9xl text-dt-yellow mb-0"
+          className="text-[12vw] text-dt-yellow mb-0"
         >
           BRANDS
         </motion.div>

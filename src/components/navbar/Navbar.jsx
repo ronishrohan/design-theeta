@@ -52,13 +52,13 @@ const NavButton = ({ children, open, delay }) => {
       transition={{ type: "tween", duration: 0.2, delay: 0.2 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="w-full relative h-[50px] flex items-center cursor-pointer"
+      className="w-full relative h-[60px] flex items-center cursor-pointer"
     >
       <AnimatePresence>
         {hovered && (
           <motion.div
             initial={{ height: "0px" }}
-            animate={{ height: "50px" }}
+            animate={{ height: "60px" }}
             exit={{ height: "0px" }}
             transition={{ type: "tween", duration: 0.1, ease: "easeInOut" }}
             className="absolute z-[100] size-full bg-dt-yellow overflow-hidden text-black flex items-center"
@@ -167,7 +167,7 @@ const Navbar = () => {
         animate={{ y: showNavbar ? 0 : "-100%" }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className={`h-[60px] z-[100] ${
-          !menuOpen ? "bg-zinc-950 delay-700" : "bg-zinc-900 delay-0"
+          !menuOpen ? "bg-[#050505] delay-700" : "bg-zinc-900 delay-0"
         } transition-colors sticky px-12 top-0 w-full flex items-center`}
       >
         <AnimatePresence mode="wait">

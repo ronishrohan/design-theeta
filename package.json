@@ -12,7 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "lenis": "^1.3.8",
-    "lucide-react": "^0.539.0",
+    "lucide-react": "^0.538.0",
     "motion": "^12.23.12",
     "pixelarticons": "^1.8.0",
     "react": "^19.1.1",
