@@ -10,7 +10,7 @@ import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 import Logo from "../assets/images/logo (10).svg";
 import SimpleWave from "./ui/Wave";
 import { useScroll } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 const footerLinks = [
   {
     href: "https://www.instagram.com/designtheeta/",
@@ -35,28 +35,24 @@ const footerLinks = [
 ];
 
 export const Footer = () => {
+  const [email, setEmail] = useState("")
   const ref = useRef();
   const { scrollYProgress: yProgress } = useScroll({
     target: ref,
     offset: ["0 1", "1 1"],
   });
   const heightContent = useTransform(yProgress, [0, 1], ["0%", "100%"]);
-  const yContent = useSpring(useTransform(yProgress, [0, 1], ["-70%", "0%"]), {
+  const yContent = useSpring(useTransform(yProgress, [0, 1], ["-40%", "0%"]), {
     damping: 100,
     stiffness: 500,
   });
   return (
     <div className="w-full  h-fit flex flex-col">
-      <div className="bg-zinc-900 w-full text-white font-instrument-serif font-light h-[50vh] flex flex-col gap-2 items-center justify-center text-3xl ">
-        <div>Let us maximize your brand's potential</div>
-        <motion.div
-          initial={{}}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ rotateZ: "-5deg" }}
-          className="font-sans text-base bg-white/10 px-4 py-2 flex items-center justify-center mt-6 rounded-sm select-none cursor-pointer font-medium hover:bg-white/20 mb-[10vh]"
-        >
-          KNOW MORE
-        </motion.div>
+      <div className="bg-[#050505] w-full text-white font-rubik font-bold h-[50vh] flex flex-col gap-2 items-center justify-center text-2xl ">
+        <div>INTERESTED TO WORK WITH US?</div>
+        <div className="h-fit w-[40vw] mt-5 focus-within:border-dt-yellow border-4 rounded-xl border-zinc-800" >
+          <input onChange={(e) => setEmail(e.target.value.toUpperCase())} value={email} type="text" className="size-full border-none outline-none px-12 py-6" placeholder="NAME@DOMAIN.COM" />
+        </div>
       </div>
 
       <div ref={ref} className="h-[90vh] bg-black  relative ">
@@ -84,7 +80,7 @@ export const Footer = () => {
                   SERVICES
                 </div>
               </div>
-              <div className="w-3/5 pr-12 h-[40vh] text-[1.5vw] text-zinc-400 font-medium grid  font-rubik grid-cols-2 grid-rows-2 ">
+              <div className="w-3/5 pr-12 h-[40vh] text-[1.5vw] text-zinc-400 font-medium grid  font-rubik grid-cols-2 grid-rows-2 gap-4">
                 <div className="size-full flex flex-col  justify-start gap-1">
                   <div className="font-semibold text-white mb-4">CONTACT</div>
                   <div>{"thedesigntheeta@gmail.com".toUpperCase()}</div>

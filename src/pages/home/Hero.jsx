@@ -3,7 +3,7 @@ import ac from "pixelarticons/svg/ac.svg";
 
 const Hero = () => {
   return (
-    <div className="h-[calc(100vh-60px)] overflow-hidden relative items-center justify-center text-6xl font-instrument-serif flex flex-col text-center px-4">
+    <div className="h-[calc(100vh-60px)] overflow-hidden relative items-center justify-center text-6xl font-rubik flex flex-col text-center px-4">
       {/* <div className="absolute bottom-0 w-full h-[50%] bg-white/5" >
         <div className="left-0 bottom-0 rotate-45 absolute  size-[10vw]" >
           <img src={ac} alt="" />

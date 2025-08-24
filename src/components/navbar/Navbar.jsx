@@ -168,7 +168,7 @@ const Navbar = () => {
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className={`h-[60px] z-[100] ${
           !menuOpen ? "bg-[#080808] delay-700" : "bg-zinc-900 delay-0"
-        } transition-colors sticky px-12 top-0 w-full flex items-center`}
+        } transition-colors  px-12 top-0 w-full flex items-center`}
       >
         <AnimatePresence mode="wait">
           <TitleAnimation key={menuOpen + "test"} />

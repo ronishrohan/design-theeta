@@ -91,7 +91,7 @@ const Work = () => {
   return (
     <section ref={workRef} id="work" className="h-[400vh]   bg-[#050505]">
       <div className="sticky top-0 py-12 h-[100dvh] flex flex-col">
-        <div className="text-white shrink-0 z-20  px-6  md:px-12 text-5xl font-bold font-instrument-serif mb-4">
+        <div className="text-white bg-[#050505]  shrink-0 z-20  px-6  md:px-12 text-5xl font-bold font-rubik mb-4">
           FEATURED WORK
         </div>
         
@@ -102,7 +102,7 @@ const Work = () => {
           viewport={{ once: true }}
           className="overflow-hidden px-12 h-full flex items-center"
         >
-          <motion.div style={{width: progressScroll}} className="absolute left-0 bottom-0 h-[4px]   bg-dt-yellow" > </motion.div>
+          <motion.div style={{width: progressScroll}} className="absolute left-0 top-0 h-[4px]   bg-dt-yellow" > </motion.div>
           <motion.div
             style={{ x: workScroll }}
             className="flex gap-4 h-full w-fit justify-stretch items-center"
@@ -118,7 +118,7 @@ const Work = () => {
                 viewport={{ once: true }}
                 // whileHover={{ y: -8 }}
                 onClick={() => handleProjectClick(project.id)}
-                className="relative bg-zinc-900/50 rounded-sm transition-all  duration-500 cursor-pointer flex-shrink-0 w-[60vw] flex flex-col h-[40vw] group overflow-hidden"
+                className="relative bg-zinc-900/50 rounded-sm transition-all  duration-500 cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
               >
                 <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
                   {project.title}{" "}
