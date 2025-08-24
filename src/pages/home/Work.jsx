@@ -14,6 +14,13 @@ const Work = () => {
       damping: 30,
     }
   );
+  const progressScroll = useSpring(
+    useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+    {
+      stiffness: 200,
+      damping: 30,
+    }
+  );
   const projects = [
     {
       id: 1,
@@ -83,22 +90,23 @@ const Work = () => {
 
   return (
     <section ref={workRef} id="work" className="h-[400vh]   bg-[#050505]">
-      <div className="sticky top-0 py-6 h-[100dvh] flex flex-col">
-        <div className="text-white shrink-0 font-rubik px-6  md:px-12 text-xl font-bold mb-4">
+      <div className="sticky top-0 py-12 h-[100dvh] flex flex-col">
+        <div className="text-white shrink-0 z-20  px-6  md:px-12 text-5xl font-bold font-instrument-serif mb-4">
           FEATURED WORK
         </div>
-
+        
         <motion.div
           initial={{ opacity: 1 }}
           // whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="overflow-hidden px-12 h-full"
+          className="overflow-hidden px-12 h-full flex items-center"
         >
+          <motion.div style={{width: progressScroll}} className="absolute left-0 bottom-0 h-[4px]   bg-dt-yellow" > </motion.div>
           <motion.div
-            
             style={{ x: workScroll }}
-            className="flex gap-4 h-full w-fit"
+            className="flex gap-4 h-full w-fit justify-stretch items-center"
+
           >
             {projects.map((project, index) => (
               <motion.div
@@ -112,18 +120,20 @@ const Work = () => {
                 onClick={() => handleProjectClick(project.id)}
                 className="relative bg-zinc-900/50 rounded-sm transition-all  duration-500 cursor-pointer flex-shrink-0 w-[60vw] flex flex-col h-[40vw] group overflow-hidden"
               >
-                <motion.div  className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
+                <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
                   {project.title}{" "}
-                  <div className="text-sm my-2 text-zinc-500">{"JULY 25, 2025"}</div>
+                  <div className="text-sm my-2 text-zinc-500">
+                    {"JULY 25, 2025"}
+                  </div>
                 </motion.div>
                 <div className="h-full w-full overflow-hidden relative">
                   <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover absolute "
-                  // whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover absolute "
+                    // whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
                 </div>
                 <div className=" font-medium text-sm whitespace-nowrap  font-rubik text-white flex gap-2 ">
                   {project.technologies.map((tech, index) => (
@@ -135,7 +145,7 @@ const Work = () => {
                   ))}
                 </div>
                 <motion.div
-                  initial={{height: "0vw"}}
+                  initial={{ height: "0vw" }}
                   variants={{
                     hover: {
                       height: "10vw",
@@ -144,7 +154,7 @@ const Work = () => {
                   className="flex flex-col overflow-hidden font-rubik text-sm px-4  border-t border-t-zinc-800"
                 >
                   <div className="font-medium mt-2">{project.title}</div>
-                  <div className="mb-2" >{project.description}</div>
+                  <div className="mb-2">{project.description}</div>
                 </motion.div>
               </motion.div>
             ))}

@@ -1,7 +1,13 @@
-import { motion, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useVelocity,
+} from "motion/react";
 
 import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
-import Logo from "../assets/images/logo (2).svg";
+import Logo from "../assets/images/logo (10).svg";
 import SimpleWave from "./ui/Wave";
 import { useScroll } from "motion/react";
 import { useRef } from "react";
@@ -35,7 +41,10 @@ export const Footer = () => {
     offset: ["0 1", "1 1"],
   });
   const heightContent = useTransform(yProgress, [0, 1], ["0%", "100%"]);
-  const yContent = useTransform(yProgress, [0, 1], ["-30%", "0%"]);
+  const yContent = useSpring(useTransform(yProgress, [0, 1], ["-70%", "0%"]), {
+    damping: 100,
+    stiffness: 500,
+  });
   return (
     <div className="w-full  h-fit flex flex-col">
       <div className="bg-zinc-900 w-full text-white font-instrument-serif font-light h-[50vh] flex flex-col gap-2 items-center justify-center text-3xl ">
@@ -50,38 +59,71 @@ export const Footer = () => {
         </motion.div>
       </div>
 
-      <div ref={ref} className="h-[90vh] bg-[#f4a20e]  relative ">
-        
+      <div ref={ref} className="h-[90vh] bg-black  relative ">
         <motion.div
           style={{ height: heightContent }}
-          className=" relative w-full overflow-hidden bg-[#f4a20e]"
+          className=" relative w-full overflow-hidden bg-black"
         >
+          <div className="h-[20vh] pointer-events-none w-full absolute top-0 left-0 bg-gradient-to-b from-black to-transparent z-40"></div>
           <motion.div
             style={{ y: yContent }}
-            className="flex h-[90vh] bg-[#f4a20e] px-12 w-full  gap-12 items-stretch absolute size-full overflow-hidden pt-[60px] "
+            className="flex h-[90vh] bg-black w-full  gap-12 items-stretch absolute size-full overflow-hidden"
           >
-            <div className=" w-full shrink-0 flex flex-col ">
-              <div className="overflow-hidden relative h-[25vh] w-[50vh]">
-                <img
-                  className="h-[80vh] translate-x-[-5vh] absolute top-1/2 -translate-y-1/2"
-                  src={Logo}
-                />
+            <div className="size-full flex items-center">
+              <div className="w-2/5 px-12 *:w-fit leading-[6vw] text-[5vw] font-rubik min-h-[40vh] flex flex-col h-fit ">
+                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                  HOME
+                </div>
+                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                  ABOUT
+                </div>
+                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                  WORK
+                </div>
+                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                  SERVICES
+                </div>
               </div>
-              <div className="text-black font-bold font-rubik mt-4">
-                We educate people about their brand stories, identity, design
-                and business. Through creative excellence, we transform brands
-                into sustainable success stories that inspire customers and
-                employees alike.
+              <div className="w-3/5 pr-12 h-[40vh] text-[1.5vw] text-zinc-400 font-medium grid  font-rubik grid-cols-2 grid-rows-2 ">
+                <div className="size-full flex flex-col  justify-start gap-1">
+                  <div className="font-semibold text-white mb-4">CONTACT</div>
+                  <div>{"thedesigntheeta@gmail.com".toUpperCase()}</div>
+                  <div>+91 9125125952</div>
+                </div>
+                <div className="size-full flex flex-col  justify-start gap-1">
+                  <div className="font-semibold text-white mb-4">SOCIAL</div>
+                  <div>INSTAGRAM</div>
+                  <div>YOUTUBE</div>
+                </div>
+                <div className="size-full flex flex-col  justify-start gap-1">
+                  <div className="font-semibold text-white mb-4">ADDRESS</div>
+                  <div>123, 2ND CROSS</div>
+                  <div>WHITEFIELD</div>
+                  <div>BENGALURU 560094</div>
+                </div>
               </div>
-              
             </div>
-            
           </motion.div>
         </motion.div>
       </div>
-      <div className="w-full h-fit bg-[#020202] p-4  font-rubik text-sm text-zinc-500 ">
-        Copyright © 2025 Design Theeta - All rights reserved
-      </div>
+      <motion.div
+        // style={{ y: yContent }}
+        // style={{y: yContent}}
+        style={{ opacity: yProgress }}
+        className="w-full border-t border-zinc-800 bg-[#020202] h-[15vh] items-center overflow-hidden  flex font-rubik text-sm text-zinc-500 justify-between relative"
+      >
+        <div className="mx-12 text-[1.5vw]">
+          {"Copyright © 2025 Design Theeta".toUpperCase()}
+        </div>
+        <div>
+          <div className="overflow-hidden relative h-[15vh] w-[7vw] mx-12">
+            <img
+              className="h-[15vh]  absolute top-1/2 -translate-y-1/2"
+              src={Logo}
+            />
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
