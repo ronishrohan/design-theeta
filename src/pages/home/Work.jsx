@@ -110,15 +110,13 @@ const Work = () => {
           >
             {projects.map((project, index) => (
               <motion.div
+                whileInView={{scale: 1, opacity: 1}}
                 key={project.id}
-                initial={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0,scale: 0.9, x: 0 }}
                 whileHover={"hover"}
-                // whileInView={{ opacity: 1, x: 0 }}
-                // transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                // whileHover={{ y: -8 }}
+                
                 onClick={() => handleProjectClick(project.id)}
-                className="relative bg-zinc-900/50 rounded-sm transition-all  duration-500 cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
+                className="relative bg-zinc-900/50 rounded-sm  cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
               >
                 <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
                   {project.title}{" "}
