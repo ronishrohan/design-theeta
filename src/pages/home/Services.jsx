@@ -8,15 +8,15 @@ const Services = () => {
     },
     {
       src: "https://i.pinimg.com/736x/26/6e/17/266e172adbccd372a1185f65014c3dbe.jpg",
-      delay: 0.2,
+      delay: 0.14,
     },
     {
       src: "https://i.pinimg.com/736x/c7/ce/fe/c7cefe56190184bc20711bc832fa39b8.jpg",
-      delay: 0.25,
+      delay: 0.2,
     },
     {
       src: "https://i.pinimg.com/736x/df/5b/1b/df5b1b1b236a7c9d6849d32e2ccf9301.jpg",
-      delay: 0.27,
+      delay: 0.24,
     },
   ];
 
@@ -27,15 +27,15 @@ const Services = () => {
     },
     {
       src: "https://i.pinimg.com/736x/26/6e/17/266e172adbccd372a1185f65014c3dbe.jpg",
-      delay: 0.2,
+      delay: 0.14,
     },
     {
       src: "https://i.pinimg.com/736x/c7/ce/fe/c7cefe56190184bc20711bc832fa39b8.jpg",
-      delay: 0.25,
+      delay: 0.2,
     },
     {
       src: "https://i.pinimg.com/736x/e0/c8/7e/e0c87eb75f48138a26c16d24c3c8497f.jpg",
-      delay: 0.27,
+      delay: 0.241,
     },
   ]
   const videos = [
@@ -45,15 +45,15 @@ const Services = () => {
     },
     {
       src: "https://i.pinimg.com/736x/26/6e/17/266e172adbccd372a1185f65014c3dbe.jpg",
-      delay: 0.2,
+      delay: 0.15,
     },
     {
       src: "https://i.pinimg.com/736x/c7/ce/fe/c7cefe56190184bc20711bc832fa39b8.jpg",
-      delay: 0.25,
+      delay: 0.2,
     },
     {
       src: "https://i.pinimg.com/736x/10/d1/99/10d199d5dde40ebcee01dd779a53037d.jpg",
-      delay: 0.27,
+      delay: 0.24,
     },
   ]
   return (
@@ -73,16 +73,18 @@ const Services = () => {
                 initial={{
                   scale: 0,
                   opacity: 1,
+                  y: "0%"
                 //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
+                    y: "0%"
                     // transition: {duration: img.delay * 2}
                   },
                 }}
-                transition={{ ease: "circInOut", duration: img.delay * 4 }}
+                transition={{ ease: "circInOut", duration: img.delay * 4}}
                 className={`absolute  size-full object-cover rounded-sm z-[${
                   idx + 1
                 }]`}
@@ -102,19 +104,23 @@ const Services = () => {
               <motion.img
                 key={idx}
                 initial={{
-                  scale: 0,
+                  scale: 1,
                   opacity: 1,
+                  rotateZ: "90deg"
                 //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
+
+                    rotateZ: "0deg"
                     // transition: {duration: img.delay * 2}
                   },
                 }}
+                style={{transformOrigin: "bottom left"}}
                 transition={{ ease: "circInOut", duration: img.delay * 4 }}
-                className={`absolute  size-full object-cover rounded-sm z-[${
+                className={`absolute  size-full object-cover  rounded-sm z-[${
                   idx + 1
                 }]`}
                 src={img.src}
@@ -132,14 +138,16 @@ const Services = () => {
               <motion.img
                 key={idx}
                 initial={{
-                  scale: 0,
+                  scale: 1,
                   opacity: 1,
+                  y: "100%"
                 //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
+                    y: "0%"
                     // transition: {duration: img.delay * 2}
                   },
                 }}
