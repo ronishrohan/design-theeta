@@ -1,17 +1,8 @@
 import { motion } from "motion/react";
-import ac from "pixelarticons/svg/ac.svg";
 
 const Hero = () => {
   return (
     <div className="h-[calc(100vh-60px)] overflow-hidden relative items-center justify-center text-6xl font-rubik flex flex-col text-center px-4">
-      {/* <div className="absolute bottom-0 w-full h-[50%] bg-white/5" >
-        <div className="left-0 bottom-0 rotate-45 absolute  size-[10vw]" >
-          <img src={ac} alt="" />
-        </div>
-      </div> */}
-      <div className="z-10 absolute size-full top-0 left-0 flex items-center justify-center">
-        
-      </div>
       <div className="z-40 relative flex items-center justify-center flex-col">
         <motion.div
           initial={{ opacity: 0, y: 5, scaleY: 0.8 }}

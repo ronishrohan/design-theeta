@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-html {
-    scroll-behavior: smooth;
-}
-
 @font-face {
     font-family: "Inter";
     src: url("./assets/fonts/inter.ttf") format("truetype");
