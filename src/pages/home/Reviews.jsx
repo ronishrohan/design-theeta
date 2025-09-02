@@ -152,15 +152,14 @@ const Reviews = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-7xl font-instrument-serif text-center mb-16 text-dt-yellow drop-shadow-lg"
+  className="text-4xl md:text-6xl font-rubik font-bold text-white mb-16 text-left w-full uppercase tracking-wide"
       >
-        What Our Clients Say
+        TESTIMONIALS
       </motion.h2>
       <div className="flex justify-center items-center gap-8 max-w-3xl mx-auto relative">
         <div className="w-full max-w-xl min-h-[340px] flex items-center justify-center relative" style={{height: 360}}>
           {testimonials.map((t, i) => {
             const state = getCardState(i);
-            // Only the center card is clickable to cycle reviews
             const isCenter = state === "center";
             return (
               <motion.div
