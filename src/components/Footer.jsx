@@ -35,7 +35,7 @@ const footerLinks = [
 ];
 
 export const Footer = () => {
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const ref = useRef();
   const { scrollYProgress: yProgress } = useScroll({
     target: ref,
@@ -50,8 +50,14 @@ export const Footer = () => {
     <div className="w-full  h-fit flex flex-col">
       <div className="bg-[#050505] w-full text-white font-rubik font-bold h-[50vh] flex flex-col gap-2 items-center justify-center text-2xl ">
         <div>INTERESTED TO WORK WITH US?</div>
-        <div className="h-fit w-[40vw] mt-5 focus-within:border-dt-yellow border-4 rounded-xl border-zinc-800" >
-          <input onChange={(e) => setEmail(e.target.value.toUpperCase())} value={email} type="text" className="size-full border-none outline-none px-12 py-6" placeholder="NAME@DOMAIN.COM" />
+        <div className="h-fit w-[40vw] mt-5 focus-within:border-dt-yellow border-4 rounded-xl border-stone-800">
+          <input
+            onChange={(e) => setEmail(e.target.value.toUpperCase())}
+            value={email}
+            type="text"
+            className="size-full border-none outline-none px-12 py-6"
+            placeholder="NAME@DOMAIN.COM"
+          />
         </div>
       </div>
 
@@ -80,7 +86,7 @@ export const Footer = () => {
                   SERVICES
                 </div>
               </div>
-              <div className="w-3/5 pr-12 h-[40vh] text-[1.5vw] text-zinc-400 font-medium grid  font-rubik grid-cols-2 grid-rows-2 gap-4">
+              <div className="w-3/5 pr-12 h-[40vh] text-[1.5vw] text-stone-400 font-medium grid  font-rubik grid-cols-2 grid-rows-2 gap-4">
                 <div className="size-full flex flex-col  justify-start gap-1">
                   <div className="font-semibold text-white mb-4">CONTACT</div>
                   <div>{"thedesigntheeta@gmail.com".toUpperCase()}</div>
@@ -106,7 +112,7 @@ export const Footer = () => {
         // style={{ y: yContent }}
         // style={{y: yContent}}
         style={{ opacity: yProgress }}
-        className="w-full border-t border-zinc-800 bg-[#020202] h-[15vh] items-center overflow-hidden  flex font-rubik text-sm text-zinc-500 justify-between relative"
+        className="w-full border-t border-stone-800 bg-[#020202] h-[15vh] items-center overflow-hidden  flex font-rubik text-sm text-stone-500 justify-between relative"
       >
         <div className="mx-12 text-[1.5vw]">
           {"Copyright © 2025 Design Theeta".toUpperCase()}

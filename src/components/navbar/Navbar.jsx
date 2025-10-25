@@ -20,7 +20,7 @@ const TitleAnimation = () => {
             >
               {letter}
             </motion.div>
-          )
+          ),
         )}
       </div>
       <div className="h-fit overflow-hidden absolute flex leading-6">
@@ -36,7 +36,7 @@ const TitleAnimation = () => {
             >
               {letter}
             </motion.div>
-          )
+          ),
         )}
       </div>
     </div>
@@ -149,7 +149,7 @@ const Navbar = () => {
             exit={{ y: "-100%" }}
             transition={{ type: "tween", duration: 0.6, ease: "circInOut" }}
             className={`h-fit top-[60px] w-full overflow-hidden fixed ${
-              !menuOpen ? "bg-zinc-950" : "bg-zinc-900"
+              !menuOpen ? "bg-stone-950" : "bg-stone-900"
             } text-2xl z-50 font-rubik font-bold flex flex-col`}
           >
             {["HOME", "PROJECTS", "FAQS", "CONTACT"].map((item, index) => (
@@ -167,7 +167,7 @@ const Navbar = () => {
         animate={{ y: showNavbar ? 0 : "-100%" }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className={`h-[60px] z-[100] ${
-          !menuOpen ? "bg-[#080808] delay-700" : "bg-zinc-900 delay-0"
+          !menuOpen ? "bg-[#080808] delay-700" : "bg-stone-900 delay-0"
         } transition-colors  px-12 top-0 w-full flex items-center`}
       >
         <AnimatePresence mode="wait">

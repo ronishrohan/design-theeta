@@ -9,9 +9,7 @@ const Hero = () => {
           <img src={ac} alt="" />
         </div>
       </div> */}
-      <div className="z-10 absolute size-full top-0 left-0 flex items-center justify-center">
-        
-      </div>
+      <div className="z-10 absolute size-full top-0 left-0 flex items-center justify-center"></div>
       <div className="z-40 relative flex items-center justify-center flex-col">
         <motion.div
           initial={{ opacity: 0, y: 5, scaleY: 0.8 }}
@@ -37,7 +35,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 2 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.5, ease: "circInOut" }}
-          className="text-lg md:text-base font-rubik text-zinc-500 max-w-3xl mb-8"
+          className="text-lg md:text-base font-rubik text-stone-500 max-w-3xl mb-8"
         >
           Creative solutions, modern designs, and a touch of innovation.
         </motion.p>

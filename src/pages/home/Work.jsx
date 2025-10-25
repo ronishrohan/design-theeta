@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { Link } from "react-router-dom";
 
 const Work = () => {
   const workRef = useRef();
@@ -113,51 +114,53 @@ const Work = () => {
             className="flex gap-4 h-full w-fit justify-stretch items-center"
           >
             {projects.map((project) => (
-              <motion.div
-                whileInView={{ scale: 1, opacity: 1 }}
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.9, x: 0 }}
-                whileHover={"hover"}
-                onClick={() => handleProjectClick(project.id)}
-                className="relative bg-zinc-900/50 rounded-sm border hover:border-dt-yellow/40 border-transparent cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
-              >
-                <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
-                  {project.title}{" "}
-                  <div className="text-sm my-2 text-zinc-500">
-                    {"JULY 25, 2025"}
-                  </div>
-                </motion.div>
-                <div className="h-full w-full overflow-hidden relative">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover absolute "
-                    // whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  />
-                </div>
-                <div className=" font-medium text-sm whitespace-nowrap  font-rubik text-white flex gap-2 ">
-                  {project.technologies.map((tech) => (
-                    <>
-                      <div className="capitalize border-r-zinc-800 border-r h-full py-2 px-4">
-                        {tech.toUpperCase()}
-                      </div>
-                    </>
-                  ))}
-                </div>
+              <Link to={"/project/" + project.id}>
                 <motion.div
-                  initial={{ height: "0vw" }}
-                  variants={{
-                    hover: {
-                      height: "10vw",
-                    },
-                  }}
-                  className="flex flex-col overflow-hidden font-rubik text-sm px-4  border-t border-t-zinc-800"
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.9, x: 0 }}
+                  whileHover={"hover"}
+                  onClick={() => handleProjectClick(project.id)}
+                  className="relative bg-stone-900/50 rounded-sm border hover:border-dt-yellow/40 border-transparent cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
                 >
-                  <div className="font-medium mt-2">{project.title}</div>
-                  <div className="pb-4">{project.description}</div>
+                  <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
+                    {project.title}{" "}
+                    <div className="text-sm my-2 text-stone-500">
+                      {"JULY 25, 2025"}
+                    </div>
+                  </motion.div>
+                  <div className="h-full w-full overflow-hidden relative">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover absolute "
+                      // whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    />
+                  </div>
+                  <div className=" font-medium text-sm whitespace-nowrap  font-rubik text-white flex gap-2 ">
+                    {project.technologies.map((tech) => (
+                      <>
+                        <div className="capitalize border-r-stone-800 border-r h-full py-2 px-4">
+                          {tech.toUpperCase()}
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                  <motion.div
+                    initial={{ height: "0vw" }}
+                    variants={{
+                      hover: {
+                        height: "10vw",
+                      },
+                    }}
+                    className="flex flex-col overflow-hidden font-rubik text-sm px-4  border-t border-t-stone-800"
+                  >
+                    <div className="font-medium mt-2">{project.title}</div>
+                    <div className="pb-4">{project.description}</div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </Link>
             ))}
           </motion.div>
         </motion.div>
