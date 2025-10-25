@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import ac from "pixelarticons/svg/ac.svg";
 
 const Hero = () => {
   return (

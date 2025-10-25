@@ -37,7 +37,7 @@ const Services = () => {
       src: "https://i.pinimg.com/736x/e0/c8/7e/e0c87eb75f48138a26c16d24c3c8497f.jpg",
       delay: 0.241,
     },
-  ]
+  ];
   const videos = [
     {
       src: "https://i.pinimg.com/736x/14/51/6d/14516d3436422c5c9d3a85e85b95b22a.jpg",
@@ -55,7 +55,7 @@ const Services = () => {
       src: "https://i.pinimg.com/736x/10/d1/99/10d199d5dde40ebcee01dd779a53037d.jpg",
       delay: 0.24,
     },
-  ]
+  ];
   return (
     <div className="flex flex-col py-12 h-dvh">
       <div className="text-white shrink-0 z-20  px-6  md:px-12 text-5xl font-bold font-rubik mb-12">
@@ -73,18 +73,18 @@ const Services = () => {
                 initial={{
                   scale: 0,
                   opacity: 1,
-                  y: "0%"
-                //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
+                  y: "0%",
+                  //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
-                    y: "0%"
+                    y: "0%",
                     // transition: {duration: img.delay * 2}
                   },
                 }}
-                transition={{ ease: "circInOut", duration: img.delay * 4}}
+                transition={{ ease: "circInOut", duration: img.delay * 4 }}
                 className={`absolute  size-full object-cover rounded-sm z-[${
                   idx + 1
                 }]`}
@@ -94,31 +94,33 @@ const Services = () => {
             ))}
           </div>
           <motion.div className="absolute bottom-0 bg-transparent opacity:100 group-hover:opacity-0 transition-all text-left w-full p-4 text-2xl font-bold z-30">
-            
             GRAPHIC DESIGN
           </motion.div>
         </motion.div>
-        <motion.div whileHover={"hover"} className="size-full group rounded-sm relative bg-green-600/20 hover:bg-green-600/50 transition-colors">
-        <div className="relative size-full  left-0 top-0 overflow-hidden rounded-sm brightness-75">
+        <motion.div
+          whileHover={"hover"}
+          className="size-full group rounded-sm relative bg-green-600/20 hover:bg-green-600/50 transition-colors"
+        >
+          <div className="relative size-full  left-0 top-0 overflow-hidden rounded-sm brightness-75">
             {videos.map((img, idx) => (
               <motion.img
                 key={idx}
                 initial={{
                   scale: 1,
                   opacity: 1,
-                  rotateZ: "90deg"
-                //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
+                  rotateZ: "90deg",
+                  //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
 
-                    rotateZ: "0deg"
+                    rotateZ: "0deg",
                     // transition: {duration: img.delay * 2}
                   },
                 }}
-                style={{transformOrigin: "bottom left"}}
+                style={{ transformOrigin: "bottom left" }}
                 transition={{ ease: "circInOut", duration: img.delay * 4 }}
                 className={`absolute  size-full object-cover  rounded-sm z-[${
                   idx + 1
@@ -132,22 +134,25 @@ const Services = () => {
             VIDEO EDITING
           </div>
         </motion.div>
-        <motion.div whileHover={"hover"} className="size-full group rounded-sm relative transition-colors bg-yellow-600/20 hover:bg-yellow-600/50">
-        <div className="relative size-full  left-0 top-0 overflow-hidden rounded-sm brightness-75">
+        <motion.div
+          whileHover={"hover"}
+          className="size-full group rounded-sm relative transition-colors bg-yellow-600/20 hover:bg-yellow-600/50"
+        >
+          <div className="relative size-full  left-0 top-0 overflow-hidden rounded-sm brightness-75">
             {websites.map((img, idx) => (
               <motion.img
                 key={idx}
                 initial={{
                   scale: 1,
                   opacity: 1,
-                  y: "100%"
-                //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
+                  y: "100%",
+                  //   transition: { duration: Math.random() + 0.2, ease: "circInOut" },
                 }}
                 variants={{
                   hover: {
                     scale: 1,
                     opacity: 1,
-                    y: "0%"
+                    y: "0%",
                     // transition: {duration: img.delay * 2}
                   },
                 }}

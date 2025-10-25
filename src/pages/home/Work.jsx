@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { Link } from "react-router-dom";
+import { useLenis } from "lenis/react";
 
 const Work = () => {
   const workRef = useRef();
+  const lenis = useLenis();
   const { scrollYProgress } = useScroll({
     target: workRef,
     offset: ["0 0", "1 1"],
@@ -86,6 +88,10 @@ const Work = () => {
   ];
 
   const handleProjectClick = (projectId) => {
+    // Reset scroll position to top when navigating to project
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
     console.log(`Navigating to project ${projectId}`);
   };
 

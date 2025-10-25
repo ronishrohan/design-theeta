@@ -1,42 +1,17 @@
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useVelocity,
-} from "motion/react";
+import { useSpring, useTransform } from "motion/react";
 
-import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
-import Logo from "../assets/images/logo (10).svg";
-import SimpleWave from "./ui/Wave";
-import { useScroll } from "motion/react";
+import { useLenis } from "lenis/react";
+import { motion, useScroll } from "motion/react";
 import { useRef, useState } from "react";
-const footerLinks = [
-  {
-    href: "https://www.instagram.com/designtheeta/",
-    icon: Instagram,
-    label: "Instagram",
-  },
-  {
-    href: "https://twitter.com/designtheeta",
-    icon: Twitter,
-    label: "Twitter",
-  },
-  {
-    href: "https://www.linkedin.com/company/designtheeta/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "mailto:hello@designtheeta.com",
-    icon: Mail,
-    label: "Mail",
-  },
-];
+import { useLocation, useNavigate } from "react-router-dom";
+import Logo from "../assets/images/logo (10).svg";
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const ref = useRef();
+  const lenis = useLenis();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { scrollYProgress: yProgress } = useScroll({
     target: ref,
     offset: ["0 1", "1 1"],
@@ -46,6 +21,42 @@ export const Footer = () => {
     damping: 100,
     stiffness: 500,
   });
+
+  const handleNavigation = (section) => {
+    if (location.pathname !== "/") {
+      // If not on home page, navigate to home first then scroll
+      navigate("/");
+      setTimeout(() => {
+        if (lenis && section !== "HOME") {
+          const target = section.toLowerCase();
+          const element = document.getElementById(
+            target === "work" ? "work" : target === "about" ? "home" : target,
+          );
+          if (element) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          }
+        } else if (lenis && section === "HOME") {
+          lenis.scrollTo(0, { duration: 1.2 });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      if (lenis) {
+        if (section === "HOME") {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          const target = section.toLowerCase();
+          const element = document.getElementById(
+            target === "work" ? "work" : target === "about" ? "home" : target,
+          );
+          if (element) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div className="w-full  h-fit flex flex-col">
       <div className="bg-[#050505] w-full text-white font-rubik font-bold h-[50vh] flex flex-col gap-2 items-center justify-center text-2xl ">
@@ -73,16 +84,28 @@ export const Footer = () => {
           >
             <div className="size-full flex items-center">
               <div className="w-2/5 px-12 *:w-fit leading-[6vw] text-[5vw] font-rubik min-h-[40vh] flex flex-col h-fit ">
-                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                <div
+                  className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out"
+                  onClick={() => handleNavigation("HOME")}
+                >
                   HOME
                 </div>
-                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                <div
+                  className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out"
+                  onClick={() => handleNavigation("ABOUT")}
+                >
                   ABOUT
                 </div>
-                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                <div
+                  className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out"
+                  onClick={() => handleNavigation("WORK")}
+                >
                   WORK
                 </div>
-                <div className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out">
+                <div
+                  className="cursor-pointer hover:text-dt-yellow hover:font-black transition-all duration-100 ease-in-out"
+                  onClick={() => handleNavigation("SERVICES")}
+                >
                   SERVICES
                 </div>
               </div>
@@ -94,8 +117,22 @@ export const Footer = () => {
                 </div>
                 <div className="size-full flex flex-col  justify-start gap-1">
                   <div className="font-semibold text-white mb-4">SOCIAL</div>
-                  <div>INSTAGRAM</div>
-                  <div>YOUTUBE</div>
+                  <a
+                    href="https://www.instagram.com/designtheeta/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-dt-yellow transition-colors cursor-pointer"
+                  >
+                    INSTAGRAM
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@designtheeta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-dt-yellow transition-colors cursor-pointer"
+                  >
+                    YOUTUBE
+                  </a>
                 </div>
                 <div className="size-full flex flex-col  justify-start gap-1">
                   <div className="font-semibold text-white mb-4">ADDRESS</div>

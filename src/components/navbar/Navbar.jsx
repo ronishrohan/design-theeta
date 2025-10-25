@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useLenis } from "lenis/react";
 import { ArrowRight } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const TitleAnimation = () => {
   const title = "DESIGN THEETA";
@@ -43,7 +45,7 @@ const TitleAnimation = () => {
   );
 };
 
-const NavButton = ({ children, open, delay }) => {
+const NavButton = ({ children, open, delay, onClick }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <motion.div
@@ -52,6 +54,7 @@ const NavButton = ({ children, open, delay }) => {
       transition={{ type: "tween", duration: 0.2, delay: 0.2 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
       className="w-full relative h-[60px] flex items-center cursor-pointer"
     >
       <AnimatePresence>
@@ -97,6 +100,9 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const lenis = useLenis();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,6 +129,43 @@ const Navbar = () => {
     type: "spring",
     stiffness: 1000,
     damping: 20,
+  };
+
+  const handleNavigation = (section) => {
+    setMenuOpen(false);
+
+    if (location.pathname !== "/") {
+      // If not on home page, navigate to home first then scroll
+      navigate("/");
+      setTimeout(() => {
+        if (lenis && section !== "HOME") {
+          const target = section.toLowerCase();
+          const element = document.getElementById(
+            target === "projects" ? "work" : target,
+          );
+          if (element) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          }
+        } else if (lenis && section === "HOME") {
+          lenis.scrollTo(0, { duration: 1.2 });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      if (lenis) {
+        if (section === "HOME") {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          const target = section.toLowerCase();
+          const element = document.getElementById(
+            target === "projects" ? "work" : target,
+          );
+          if (element) {
+            lenis.scrollTo(element, { duration: 1.2 });
+          }
+        }
+      }
+    }
   };
 
   return (
@@ -152,8 +195,13 @@ const Navbar = () => {
               !menuOpen ? "bg-stone-950" : "bg-stone-900"
             } text-2xl z-50 font-rubik font-bold flex flex-col`}
           >
-            {["HOME", "PROJECTS", "FAQS", "CONTACT"].map((item, index) => (
-              <NavButton open={menuOpen} delay={index} key={index}>
+            {["HOME", "PROJECTS", "SERVICES", "REVIEWS"].map((item, index) => (
+              <NavButton
+                open={menuOpen}
+                delay={index}
+                key={index}
+                onClick={() => handleNavigation(item)}
+              >
                 {item}
               </NavButton>
             ))}

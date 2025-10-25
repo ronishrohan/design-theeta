@@ -1,13 +1,24 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import Loader from "./components/Loader";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Project from "./pages/project/Project";
+import { useLenis } from "lenis/react";
 
 const App = () => {
   const [loaded, setLoaded] = useState(true);
+  const lenis = useLenis();
+  const location = useLocation();
+
+  // Reset scroll to top when route changes
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, [location.pathname, lenis]);
+
   return (
     <>
       <Loader setLoaded={setLoaded} />

@@ -6,10 +6,16 @@ import Work from "./Work";
 const Home = () => {
   return (
     <>
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
       <Work />
-      <Services />
-      <Reviews />
+      <section id="services">
+        <Services />
+      </section>
+      <section id="reviews">
+        <Reviews />
+      </section>
       {/* <Brands/>  */}
     </>
   );
