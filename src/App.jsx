@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Project from "./pages/project/Project";
 import { useLenis } from "lenis/react";
+import Admin from "./pages/admin/Admin";
 
 const App = () => {
   const [loaded, setLoaded] = useState(true);
@@ -29,6 +30,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/project/:slug" element={<Project />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
             <Footer />
           </div>
