@@ -12,14 +12,14 @@ const Work = () => {
     {
       stiffness: 200,
       damping: 30,
-    }
+    },
   );
   const progressScroll = useSpring(
     useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
     {
       stiffness: 200,
       damping: 30,
-    }
+    },
   );
   const projects = [
     {
@@ -94,7 +94,7 @@ const Work = () => {
         <div className="text-white bg-[#050505]  shrink-0 z-20  px-6  md:px-12 text-5xl font-bold font-rubik mb-4">
           FEATURED WORK
         </div>
-        
+
         <motion.div
           initial={{ opacity: 1 }}
           // whileInView={{ opacity: 1 }}
@@ -102,21 +102,24 @@ const Work = () => {
           viewport={{ once: true }}
           className="overflow-hidden px-12 h-full flex items-center"
         >
-          <motion.div style={{width: progressScroll}} className="absolute left-0 top-0 h-[4px]   bg-dt-yellow" > </motion.div>
+          <motion.div
+            style={{ width: progressScroll }}
+            className="absolute left-0 top-0 h-[4px]   bg-dt-yellow"
+          >
+            {" "}
+          </motion.div>
           <motion.div
             style={{ x: workScroll }}
             className="flex gap-4 h-full w-fit justify-stretch items-center"
-
           >
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <motion.div
-                whileInView={{scale: 1, opacity: 1}}
+                whileInView={{ scale: 1, opacity: 1 }}
                 key={project.id}
-                initial={{ opacity: 0,scale: 0.9, x: 0 }}
+                initial={{ opacity: 0, scale: 0.9, x: 0 }}
                 whileHover={"hover"}
-                
                 onClick={() => handleProjectClick(project.id)}
-                className="relative bg-zinc-900/50 rounded-sm  cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
+                className="relative bg-zinc-900/50 rounded-sm border hover:border-dt-yellow/40 border-transparent cursor-pointer flex-shrink-0 w-[40vw] flex flex-col h-[30vw] group overflow-hidden"
               >
                 <motion.div className="px-4  items-center font-rubik font-semibold w-full justify-between flex">
                   {project.title}{" "}
@@ -134,7 +137,7 @@ const Work = () => {
                   />
                 </div>
                 <div className=" font-medium text-sm whitespace-nowrap  font-rubik text-white flex gap-2 ">
-                  {project.technologies.map((tech, index) => (
+                  {project.technologies.map((tech) => (
                     <>
                       <div className="capitalize border-r-zinc-800 border-r h-full py-2 px-4">
                         {tech.toUpperCase()}
@@ -152,7 +155,7 @@ const Work = () => {
                   className="flex flex-col overflow-hidden font-rubik text-sm px-4  border-t border-t-zinc-800"
                 >
                   <div className="font-medium mt-2">{project.title}</div>
-                  <div className="mb-2">{project.description}</div>
+                  <div className="pb-4">{project.description}</div>
                 </motion.div>
               </motion.div>
             ))}

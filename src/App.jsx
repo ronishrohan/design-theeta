@@ -1,28 +1,24 @@
-import React, { useState } from "react";
-import Navbar from "./components/navbar/Navbar";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import Hero from "./pages/home/Hero";
-import Work from "./pages/home/Work";
-import Services from "./pages/home/Services";
 import Loader from "./components/Loader";
-import Brands from "./pages/home/Brands";
-import Reviews from "./pages/home/Reviews";
-
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import Project from "./pages/project/Project";
 
 const App = () => {
   const [loaded, setLoaded] = useState(true);
   return (
     <>
-      <Loader setLoaded />
+      <Loader setLoaded={setLoaded} />
       {loaded && (
         <>
           <div className="bg-[#080808] overflow-x-clip text-white flex flex-col font-inter">
             <Navbar />
-            <Hero />
-            <Work />
-            <Services />
-            <Reviews />
-            {/* <Brands/>  */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/project/:slug" element={<Project />} />
+            </Routes>
             <Footer />
           </div>
         </>
